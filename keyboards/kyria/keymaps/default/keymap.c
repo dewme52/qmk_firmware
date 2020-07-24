@@ -16,32 +16,33 @@
 #include QMK_KEYBOARD_H
 
 enum layers {
-    _QWERTY = 0,
+    _RSTHD = 0,
     _LOWER,
     _RAISE,
-    _ADJUST
+    _ADJUST,
+    _10KEY
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* 
- * Base Layer: QWERTY
+ * Base Layer: RSTHD
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |RAIS/ESC|   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |  | \   |
+ * |RAIS/ESC|   J  |   C  |   Y  |   F  |   K  |                              |   Z  |   L  |   ,  |   U  |   Q  |    \   |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |Ctrl/BS |   A  |   S  |  D   |   F  |   G  |                              |   H  |   J  |   K  |   L  | ;  : |  ' "   |
+ * |Ctrl/BS |   R  |   S  |  T   |   H  |   D  |                              |   M  |   N  |   A  |   I  |   O  |    =   |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  |LShift|LShift|  |LShift|LShift|   N  |   M  | ,  < | . >  | /  ? |  - _   |
+ * | LShift |   /  |   V  |   G  |   P  |   B  |LShift|LShift|  |LShift|LShift|   X  |   W  |   .  |   ;  |   -  | RShift |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        | GUI  | Del  | Enter| Space| Esc  |  | Enter| Space| Tab  | Bksp | AltGr|
- *                        |      |      | Alt  | Lower| Raise|  | Lower| Raise|      |      |      |
+ *                        | GUI  | Del  | Enter|   E  | Esc  |  | Enter| Space| Tab  | Bksp | AltGr|
+ *                        |      |      | Alt  |10KEY | Raise|  | Lower| Raise|      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
-    [_QWERTY] = LAYOUT(
-      LT(_RAISE, KC_ESC),       KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_PIPE,
-      MT(MOD_LCTL, KC_BSPC),   KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-      KC_LSFT,                 KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_LSFT,   KC_LSFT, KC_LSFT, KC_LSFT, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
-              KC_LGUI, KC_DEL, MT(MOD_LALT, KC_ENT), LT(_LOWER, KC_SPC), LT(_RAISE, KC_ESC), LT(_LOWER, KC_ENT), LT(_RAISE, KC_SPC), KC_TAB,  KC_BSPC, KC_RALT
+    [_RSTHD] = LAYOUT(
+      LT(_RAISE, KC_ESC),       KC_J,   KC_C,   KC_Y,   KC_F,   KC_K,                                         KC_Z,    KC_L,    KC_COMM,    KC_U,    KC_Q,    KC_BSLS,
+      MT(MOD_LCTL, KC_BSPC),   KC_R,   KC_S,   KC_T,   KC_H,   KC_D,                                         KC_M,    KC_N,    KC_A,    KC_I,    KC_O, KC_EQL,
+      KC_LSFT,                 KC_SLSH,   KC_V,   KC_G,   KC_P,   KC_B,   KC_LSFT,   KC_LSFT, KC_LSFT, KC_LSFT, KC_X,    KC_W,    KC_DOT, KC_SCLN,  KC_MINS, KC_RSFT,
+			KC_LGUI, KC_DEL, MT(MOD_LALT, KC_ENT), LT(_10KEY, KC_E), LT(_RAISE, KC_ESC), LT(_LOWER, KC_ENT), LT(_RAISE, KC_SPC), KC_TAB,  KC_BSPC, KC_RALT
     ),
 /*
  * Lower Layer: Symbols
@@ -106,23 +107,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // /*
 //  * Layer template
 //  *
-//  * ,-------------------------------------------.                              ,-------------------------------------------.
-//  * |        |      |      |      |      |      |                              |      |      |      |      |      |        |
-//  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
-//  * |        |      |      |      |      |      |                              |      |      |      |      |      |        |
-//  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
-//  * |        |      |      |      |      |      |      |      |  |      |      |      |      |      |      |      |        |
-//  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
-//  *                        |      |      |      |      |      |  |      |      |      |      |      |
-//  *                        |      |      |      |      |      |  |      |      |      |      |      |
+//  * ,-------------------------------------------.                               ,--------------------------------------------.
+//  * |        |      |      |      |      |      |                               |       |   7    |   8   |  9   |      |     |
+//  * |--------+------+------+------+------+------|                               |------+------+------+------+------+---------|
+//  * |        |      |      |      |      |      |                               |       |   4   |   5   |   6   |      |     |
+//  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+----------|
+//  * |        |      |      |      |      |      |      |      |  |      |       |       |   1   |   2   |  3    |      |     |
+//  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+------------------------'
+//  *                        |      |      |      |      |      |  |      |       |  0   |      |      |
+//  *                        |      |      |      |      |      |  |      |       |      |      |      |
 //  *                        `----------------------------------'  `----------------------------------'
 //  */
-//     [_LAYERINDEX] = LAYOUT(
-//       _______, _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______, _______,
-//       _______, _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______, _______,
-//       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-//                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
-//     ),
+     [_10KEY] = LAYOUT(
+       _______, _______, _______, _______, _______, _______,                                     _______,KC_7, KC_8, KC_9,  _______, _______,
+       _______, _______, _______, _______, _______, _______,                                     _______,KC_4, KC_5, KC_6, _______, _______,
+       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,KC_1, KC_2, KC_3, _______, _______,
+                                  _______, _______, _______, _______, _______, _______,KC_0, _______, _______, _______
+   ),
 };
 
 layer_state_t layer_state_set_user(layer_state_t state) {
@@ -165,7 +166,7 @@ static void render_status(void) {
     // Host Keyboard Layer Status
     oled_write_P(PSTR("Layer: "), false);
     switch (get_highest_layer(layer_state)) {
-        case _QWERTY:
+        case _RSTHD:
             oled_write_P(PSTR("Default\n"), false);
             break;
         case _LOWER:
@@ -176,6 +177,9 @@ static void render_status(void) {
             break;
         case _ADJUST:
             oled_write_P(PSTR("Adjust\n"), false);
+            break;
+		case _10KEY:
+            oled_write_P(PSTR("10KEY\n"), false);
             break;
         default:
             oled_write_P(PSTR("Undefined\n"), false);
