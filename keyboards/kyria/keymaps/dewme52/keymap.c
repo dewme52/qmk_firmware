@@ -32,16 +32,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |Ctrl/BS |   R  |   S  |  T   |   H  |   D  |                              |   M  |   N  |   A  |   I  |   O  |    =   |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   /  |   V  |   G  |   P  |   B  |LShift|LShift|  |LShift|LShift|   X  |   W  |   .  |   ;  |   -  | RShift |
+ * |ADJ/LSft|   /  |   V  |   G  |   P  |   B  |LShift|LShift|  |LShift|LShift|   X  |   W  |   .  |   ;  |   -  | RShift |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        | GUI  | Del  | Enter|   E  | Esc  |  | Enter| Space| Tab  | Bksp | AltGr|
  *                        |      |      | Alt  |10KEY | Raise|  | Lower| Raise|      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_RSTHD] = LAYOUT(
-      LT(_RAISE, KC_ESC),       KC_J,   KC_C,   KC_Y,   KC_F,   KC_K,                                         KC_Z,    KC_L,    KC_COMM,    KC_U,    KC_Q,    KC_BSLS,
+      LT(_RAISE, KC_ESC),      KC_J,   KC_C,   KC_Y,   KC_F,   KC_K,                                         KC_Z,    KC_L,    KC_COMM,    KC_U,    KC_Q,    KC_BSLS,
       MT(MOD_LCTL, KC_BSPC),   KC_R,   KC_S,   KC_T,   KC_H,   KC_D,                                         KC_M,    KC_N,    KC_A,    KC_I,    KC_O, KC_EQL,
-      KC_LSFT,                 KC_SLSH,   KC_V,   KC_G,   KC_P,   KC_B,   KC_LSFT,   KC_LSFT, KC_LSFT, KC_LSFT, KC_X,    KC_W,    KC_DOT, KC_SCLN,  KC_MINS, KC_RSFT,
+      KC_LSFT,     KC_SLSH,   KC_V,   KC_G,   KC_P,   KC_B,   KC_LSFT,  _ADJUST,  KC_LSFT,  KC_LSFT, KC_X,    KC_W,    KC_DOT, KC_SCLN,  KC_MINS, KC_RSFT,
 			KC_LGUI, KC_DEL, MT(MOD_LALT, KC_ENT), LT(_10KEY, KC_E), LT(_RAISE, KC_ESC), LT(_LOWER, KC_ENT), LT(_RAISE, KC_SPC), KC_TAB,  KC_BSPC, KC_RALT
     ),
 /*
